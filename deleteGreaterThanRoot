@@ -1,0 +1,19 @@
+// Helper function to delete an entire subtree
+void deleteTree(struct Node* node) {
+    if (node == NULL) return;
+    deleteTree(node->left);
+    deleteTree(node->right);
+    free(node);
+}
+
+// Function to delete nodes greater than root
+void deleteGreaterThanRoot(struct Node* root) {
+    if (root == NULL) return;
+    
+    // Delete the entire right subtree (all values greater than root in BST)
+    deleteTree(root->right);
+    root->right = NULL;
+    
+    // Note: This assumes standard BST property where 
+    // all values in right subtree are greater than root
+}
